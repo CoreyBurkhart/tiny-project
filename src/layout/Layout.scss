@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#main-header {
+  h1 {
+    display: inline-block;
+  }
+}
+
+#sidebar-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate3d(-100%, 0, 0);
+  width: 70%;
+  height: 100vh;
+  overflow: hidden;
+  background: lightgray;
+  text-align: right;
+  ul {
+    text-align: left;
+    margin: 1rem;
+    text-decoration: none;
+    list-style: none;
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
+}
+
+.fa-close, .fa-bars {
+  margin: 1rem;
+  cursor: pointer;
+}
