@@ -1,35 +1,35 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-
-#main-header {
-  h1 {
-    display: inline-block;
-  }
-}
-
-#sidebar-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transform: translate3d(-100%, 0, 0);
-  width: 70%;
+#layout-wrapper {
   height: 100vh;
-  overflow: hidden;
-  background: lightgray;
-  text-align: right;
-  ul {
-    text-align: left;
-    margin: 1rem;
-    text-decoration: none;
-    list-style: none;
-    font-size: 2rem;
-    text-transform: uppercase;
-  }
+  position: relative;
 }
 
-.fa-close, .fa-bars {
-  margin: 1rem;
-  cursor: pointer;
+nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 13%;
+  width: 100%;
+  background: salmon;
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 10%;
+    padding: 0;
+    height: 100%;
+    list-style: none;
+    li {
+      margin: 0;
+      padding: 0;
+      align-self: center;
+      i, sub, a {
+        display: block;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+      }
+      .material-icons {
+      }
+    }
+  }
 }

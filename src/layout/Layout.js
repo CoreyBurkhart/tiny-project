@@ -17,35 +17,36 @@ export default class Layout extends React.Component {
 }
 
 class Nav extends React.Component {
-  constructor() {
-    super()
-    this.state = {navCx: ''};
-    this.expandMenu = this.expandMenu.bind(this)
-  }
-  expandMenu(e) {
-    if(this.state.navCx === 'slideOutLeft' || this.state.navCx === '') {
-      this.setState({navCx: 'slideInLeft'})
-    } else {
-      this.setState({navCx: 'slideOutLeft'})
-    }
-  }
   render() {
     return (
-      <header id="main-header" className="row">
-        <span onClick={this.expandMenu} className="fa fa-bars fa-2x col-*-2" aria-hidden="true"></span>
-        <Link className="col-*-10" to="/">
-          <h1 id="main-logo">Tiny Planner</h1>
-        </Link>
-      <nav id="sidebar-container" className={"animated row " + this.state.navCx} >
-        <span onClick={this.expandMenu} className="fa fa-close fa-2x col-xs-2 col-xs-offset-10" aria-hidden="true"></span>
+      <nav>
         <ul>
-          <li>link</li>
-          <li>link</li>
-          <li>link</li>
-          <li>link</li>
+          <li>
+            <Link>
+              <i className="material-icons">search</i>
+              <sub>Search</sub>
+            </Link>
+          </li>
+          <li>
+            <Link>
+              <i className="material-icons">local_grocery_store</i>
+              <sub>Cart</sub>
+            </Link>
+          </li>
+          <li>
+            <Link>
+              <i className="material-icons">mood</i>
+              <sub>Saved</sub>
+            </Link>
+          </li>
+          <li>
+            <Link>
+              <i className="material-icons">person_outline</i>
+              <sub>Me</sub>
+            </Link>
+          </li>
         </ul>
       </nav>
-    </header>
     )
   }
 }

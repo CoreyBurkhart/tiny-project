@@ -1,6 +1,4 @@
 const path = require('path')
-// require("!style-loader!css-loader!sass-loader!./file.scss");
-// var css = require("!css-loader!sass-loader!./file.scss");
 
 module.exports = {
     entry: ['babel-polyfill', './src/index.js'],
