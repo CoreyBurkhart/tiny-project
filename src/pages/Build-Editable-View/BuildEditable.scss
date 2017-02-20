@@ -1,44 +1,74 @@
 #build-editable-wrapper {
-  width: 95%;
-  margin: 1rem auto;
+  width: 100%;
   text-align: center;
-  .panel {
-    width: 100%;
-    outline: 1px solid gray;
-    .panel-heading {
-      display: flex;
-      flex-direction: row;
-      width: 100%;
-      justify-content: space-between;
-    }
-    .panel-title, .menu {
-      margin: 1rem;
-      padding: 0;
-    }
-    .panel-title {
-      // padding-left: 2rem;
-    }
-  }
   #gallery {
-    width: 100%;
-    .gallery-fig {
-      padding: 0;
-      margin: 1% auto;
-      display: inline-block;
-      width: 50%;
-      img {
-       width: 100%;
-       margin: 0;
-       padding: 0;
-     }
-    }
+    background: lighten(grey, 45%);
+    padding-top: .5rem;
+    padding-bottom: 2rem;
+    position: relative;
     .add-to-panel-btn {
-      margin: 1rem;
-      background: none;
+      position: absolute;
+      bottom: -25px;
+      left: calc(50% - 25px);
+      background: royalblue;
+      border-radius: 100%;
       border: none;
-      * {
+      width: 50px;
+      height: 50px;
+      color: white;
+      i {
+        font-size: 1.8rem;
         display: block;
       }
     }
+    .fig-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 0 2px;
+      width: 100%;
+      margin: 0 auto;
+      .gallery-fig {
+        margin: 0;
+        padding: 0 2px ;
+        width: calc(50% - 8px);
+        position: relative;
+        img {
+          width: 100%;
+        }
+        .close {
+          font-size: 1.5rem;
+          border-radius: 100%;
+          background-color: white;
+          color: royalblue;
+          position: absolute;
+          top: 5%;
+          right: 5%;
+        }
+      }
+    }
+  }
+}
+
+#build-editable-wrapper {
+  #build-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: royalblue;
+    margin: 0;
+    padding: 0;
+    z-index: 2000;
+    color: white;
+    box-shadow: 1px 1px 1px 1px gray;
+  }
+  .build-name {
+    text-transform: capitalize;
+    margin-left: 1.3rem;
+  }
+  .build-menu {
+    font-size: 2rem;
+    margin: 0 1rem ;
   }
 }

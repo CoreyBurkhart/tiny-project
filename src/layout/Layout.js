@@ -40,9 +40,9 @@ class Nav extends React.Component {
             </Link>
           </li>
           <li>
-            <Link>
-              <i className="material-icons">person_outline</i>
-              <sub>Me</sub>
+            <Link >
+              <i className="material-icons active">person_outline</i>
+              <sub className='active'>Me</sub>
             </Link>
           </li>
         </ul>

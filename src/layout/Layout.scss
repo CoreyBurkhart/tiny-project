@@ -1,15 +1,16 @@
 #layout-wrapper {
-  height: 100vh;
+  min-height: 100vh;
   position: relative;
+  background: lighten(gray, 40%);
 }
 
 nav {
   position: fixed;
   bottom: 0;
   left: 0;
-  height: 13%;
+  height: 12%;
   width: 100%;
-  background: salmon;
+  background: white;
   ul {
     display: flex;
     flex-direction: row;
@@ -25,10 +26,11 @@ nav {
       i, sub, a {
         display: block;
         text-align: center;
-        color: white;
+        color: grey;
         font-weight: bold;
       }
-      .material-icons {
+      .active {
+        color: salmon;
       }
     }
   }
