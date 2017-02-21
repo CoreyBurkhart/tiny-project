@@ -2,6 +2,7 @@ import React from 'react';
 import { observer } from 'mobx-react'
 import './BuildEditable.scss';
 import FloatButton from '../../Components/FloatButton.js';
+import BuilderAvatar from '../../Components/BuilderAvatar.js';
 // import store from './BuildEditableStore.js';
 
 @observer
@@ -15,7 +16,7 @@ class BuildEditable extends React.Component {
           <h2  className='build-name'>title of build</h2>
           <div className="builders-div">
             {builders.map((builder) => {
-              return <img className='builder' key={builder.name} src={builder.thumb} alt={builder.name}/>
+              return <BuilderAvatar key={builder.name} builder={builder} />
             })}
             <FloatButton id='add-builder' className='builder'/>
           </div>
