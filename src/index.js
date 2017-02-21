@@ -6,6 +6,7 @@ import Layout from "./layout/Layout.js";
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import BuildEditable from './pages/Build-Editable-View/BuildEditable.js';
 import BuildEditableStore from './pages/Build-Editable-View/BuildEditableStore.js';
+import './variables.scss'
 
 ReactDOM.render(
   <Router history={hashHistory}>

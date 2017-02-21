@@ -40,7 +40,7 @@ class BuildEditable extends React.Component {
             </div>
           </div>
         </section>
-        <Summary />
+        <Summary store={this.props.route.store} />
       </div>
     )
   }
