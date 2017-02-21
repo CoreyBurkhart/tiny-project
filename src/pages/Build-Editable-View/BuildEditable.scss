@@ -56,7 +56,7 @@
   text-align: center;
   position: relative;
   .panel {
-    background: lighten(grey, 45%);
+    background: $paper-dark;
     z-index: -100;
     position: relative;
     box-shadow: 1px 1px 1px 1px gray;
@@ -101,10 +101,10 @@
   width: 50px;
   height: 50px;
   color: white;
-  background: royalblue;
+  background: $primary-color;
   margin: 0 .2rem;
   z-index: 5000 !important;
-  box-shadow: 1px 1px 1px 1px gray;
+  box-shadow: 1px 1px 1px 1px darkgray;
   i {
     display: inline-block;
     font-size: 1.8rem;
@@ -124,7 +124,12 @@
   left: 0;
 }
 
-
+.divider {
+  margin: 0;
+  padding: 0;
+  height: 0;
+  border-bottom: 1px solid $paper-darkest;
+}
 
 // END OF GALLERY !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -132,19 +137,28 @@
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // START SUMMARY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
+.info {
+  color: $info;
+}
 #summary{
-  padding: 3rem 0;
-  // padding-bottom: 10rem;
+  padding: 1rem 0;
+  .summary-description {
+    margin: 1rem 0;
+    padding: 0 .5rem;
+    background: transparentize(lighten($info, 20%), .7);
+  }
   .summary-content {
     width: 100%;
     margin: auto;
     padding: 0;
     #summary-input {
       width: 100%;
+      margin: 1rem auto;
+      max-width: 96%;
       height: 30vh;
       border: none;
-      
+      padding: .3rem;
+      border-bottom: 2px solid $paper-darkest;
     }
   }
 }
