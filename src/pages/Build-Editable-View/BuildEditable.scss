@@ -44,6 +44,7 @@
   height: 50px;
   color: white;
   background: royalblue;
+  margin: 0 .2rem;
   i {
     display: inline-block;
     font-size: 1.8rem;
@@ -56,10 +57,11 @@
   height: 40px;
 }
 
-#add-image {
+.panel-options-div {
   position: absolute;
+  width: 100%;
   bottom: -25px;
-  left: calc(50% - 25px);
+  left: 0;
 }
 
 #build-editable-wrapper {
@@ -72,7 +74,6 @@
     margin: 0;
     padding: 0;
     z-index: 2000;
-    // height: 10vh;
     color: royalblue;
     box-shadow: 1px 1px 1px 1px gray;
   }
