@@ -24,7 +24,10 @@ class BuildEditable extends React.Component {
         <section id='gallery' className='panel'>
           <div className='fig-container'>
             {gallery.map((href) => {
-              return (<figure key={href} className='gallery-fig' ><img src={href} alt='something'/><i className='material-icons close'>close</i></figure>)
+              return (<figure key={href} className='gallery-fig' >
+                <img src={href} alt='something'/>
+                <input className='delete-box' type='checkbox' />
+              </figure>)
             })}
             <div className='panel-options-div'>
               <FloatButton id='add-image' icon='add' onClick={()=>{console.log('add img')} }/>
