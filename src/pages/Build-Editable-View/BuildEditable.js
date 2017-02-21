@@ -4,6 +4,9 @@ import './BuildEditable.scss';
 import FloatButton from '../../Components/FloatButton.js';
 import BuilderAvatar from '../../Components/BuilderAvatar.js';
 // import store from './BuildEditableStore.js';
+import TransitionGroup from 'react-addons-transition-group';
+import Summary from './Components/Summary.js';
+
 
 @observer
 class BuildEditable extends React.Component {
@@ -16,7 +19,7 @@ class BuildEditable extends React.Component {
           <h2  className='build-name'>title of build</h2>
           <div className="builders-div">
             {builders.map((builder) => {
-              return <BuilderAvatar key={builder.name} builder={builder} />
+              return <BuilderAvatar  key={builder.name} builder={builder} />
             })}
             <FloatButton id='add-builder' className='builder'/>
           </div>
@@ -31,12 +34,13 @@ class BuildEditable extends React.Component {
               </figure>)
             })}
             <div className='panel-options-div'>
-              <FloatButton id='add-image' icon='add' onClick={()=>{console.log('add img')} }/>
-              <FloatButton id='add-image' icon='close' onClick={()=>{console.log('add img')} }/>
-              <FloatButton id='add-image' icon='delete' onClick={()=>{console.log('add img')} }/>
+              <FloatButton id='add-image' icon='add' style={{background: 'green'}} />
+              <FloatButton id='add-image' icon='close' />
+              <FloatButton id='add-image' icon='delete'  style={{background: 'red'}} />
             </div>
           </div>
         </section>
+        <Summary />
       </div>
     )
   }

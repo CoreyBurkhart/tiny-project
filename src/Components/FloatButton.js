@@ -3,18 +3,28 @@ import React from 'react';
 class FloatButton extends React.Component {
 
   render() {
-    // const { ...args } = this.props
-    const className = this.props.className || 'float-button ';
-    const onClick = this.props.onClick || (() => {});
-    const icon = this.props.icon || 'add';
-    const id = this.props.id || '';
+    const {
+      id = '',
+      style={},
+      className = '',
+      onClick = (() => {}),
+      icon = 'add'
+    } = this.props;
 
     return (
-      <button id={id} className={'float-button ' + className} onClick={onClick}>
+      <button id={id} style={style} className={'float-button ' + className} onClick={onClick}>
         <i className="material-icons">{icon}</i>
       </button>
     )
   }
+}
+
+FloatButton.propTypes = {
+  id: React.PropTypes.string,
+  style: React.PropTypes.object,
+  className: React.PropTypes.string,
+  onClick: React.PropTypes.func,
+  icon: React.PropTypes.string
 }
 
 export default FloatButton;

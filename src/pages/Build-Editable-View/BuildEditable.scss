@@ -1,13 +1,66 @@
+//TITLE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#build-editable-wrapper {
+  #build-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    margin: 0;
+    padding: 0;
+    z-index: 2000;
+    color: royalblue;
+    box-shadow: 1px 1px 1px 1px gray;
+  }
+  .builders-div {
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 75%;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 0 1rem 0;
+    .builder {
+      border-radius: 100%;
+      margin: .2rem;
+      width: 40px;
+      height: 40px;
+    }
+  }
+  .build-name, .build-menu {
+    margin: 1rem;
+    z-index: 2010;
+  }
+  .build-name {
+    font-size: 2.4rem;
+    text-transform: capitalize;
+  }
+  .build-menu {
+    font-size: 2rem;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}
+
+// END TITLE !!!!!!!!!!!!!!!!
+
+
+// GALLERY !!!!!!!!!!!!!!!!!!!!!!!!
 #build-editable-wrapper {
   width: 100%;
   text-align: center;
   position: relative;
-  #gallery {
+  .panel {
     background: lighten(grey, 45%);
+    z-index: -100;
+    position: relative;
+  }
+  #gallery {
     padding-top: .5rem;
     padding-bottom: 2rem;
     z-index: 100;
-    position: relative;
     .fig-container {
       display: flex;
       flex-direction: row;
@@ -45,6 +98,8 @@
   color: white;
   background: royalblue;
   margin: 0 .2rem;
+  z-index: 5000 !important;
+  box-shadow: 1px 1px 1px 1px gray;
   i {
     display: inline-block;
     font-size: 1.8rem;
@@ -64,48 +119,24 @@
   left: 0;
 }
 
-#build-editable-wrapper {
-  #build-header {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    background: white;
-    margin: 0;
-    padding: 0;
-    z-index: 2000;
-    color: royalblue;
-    box-shadow: 1px 1px 1px 1px gray;
-  }
-  .builders-div {
-    // width: 50%;
-    height: 50px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    max-width: 75%;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0 0 1rem 0;
-    .builder {
-      border-radius: 100%;
-      margin: .2rem;
-      width: 40px;
-      height: 40px;
+
+
+// END OF GALLERY !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// START SUMMARY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+#summary{
+  z-index: 1000;
+  padding: 3rem 0;
+  padding-bottom: 10rem;
+  .summary-content {
+    #summary-input {
+      z-index: 2000;
+      width: 100%;
+      height: 30vh;
     }
-  }
-  .build-name, .build-menu {
-    margin: 1rem;
-    z-index: 2010;
-  }
-  .build-name {
-    font-size: 2.4rem;
-    text-transform: capitalize;
-  }
-  .build-menu {
-    font-size: 2rem;
-    position: absolute;
-    top: 0;
-    right: 0;
   }
 }
