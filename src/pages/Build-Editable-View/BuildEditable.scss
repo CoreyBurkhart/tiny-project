@@ -1,26 +1,13 @@
 #build-editable-wrapper {
   width: 100%;
   text-align: center;
+  position: relative;
   #gallery {
     background: lighten(grey, 45%);
     padding-top: .5rem;
     padding-bottom: 2rem;
+    z-index: 100;
     position: relative;
-    .add-to-panel-btn {
-      position: absolute;
-      bottom: -25px;
-      left: calc(50% - 25px);
-      background: royalblue;
-      border-radius: 100%;
-      border: none;
-      width: 50px;
-      height: 50px;
-      color: white;
-      i {
-        font-size: 1.8rem;
-        display: block;
-      }
-    }
     .fig-container {
       display: flex;
       flex-direction: row;
@@ -50,25 +37,74 @@
   }
 }
 
+.float-button {
+  border-radius: 100%;
+  border: none;
+  width: 50px;
+  height: 50px;
+  color: white;
+  background: royalblue;
+  i {
+    display: inline-block;
+    font-size: 1.8rem;
+    display: block;
+  }
+}
+
+#add-builder {
+  width: 40px;
+  height: 40px;
+}
+
+#add-image {
+  position: absolute;
+  bottom: -25px;
+  left: calc(50% - 25px);
+}
+
 #build-editable-wrapper {
   #build-header {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background-color: royalblue;
+    background: white;
     margin: 0;
     padding: 0;
     z-index: 2000;
-    color: white;
+    // height: 10vh;
+    color: royalblue;
     box-shadow: 1px 1px 1px 1px gray;
   }
+  .builders-div {
+    // width: 50%;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 75%;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0 0 1rem 0;
+    .builder {
+      border-radius: 100%;
+      margin: .2rem;
+      width: 40px;
+      height: 40px;
+    }
+  }
+  .build-name, .build-menu {
+    margin: 1rem;
+    z-index: 2010;
+  }
   .build-name {
+    font-size: 2.4rem;
     text-transform: capitalize;
-    margin-left: 1.3rem;
   }
   .build-menu {
     font-size: 2rem;
-    margin: 0 1rem ;
+    position: absolute;
+    top: 0;
+    right: 0;
   }
 }
