@@ -51,6 +51,7 @@
 
 // GALLERY !!!!!!!!!!!!!!!!!!!!!!!!
 #build-editable-wrapper {
+  padding-bottom: 11vh;
   z-index: 5000;
   width: 100%;
   text-align: center;
@@ -147,13 +148,21 @@
     padding: 0 .5rem;
     background: transparentize(lighten($info, 20%), .7);
   }
+  .save {
+    display: inline-block;
+    color: $success;
+    font-weight: bold;
+    margin: 1rem;
+    padding: .3rem;
+    // background: white;
+  }
   .summary-content {
     width: 100%;
     margin: auto;
     padding: 0;
     #summary-input {
       width: 100%;
-      margin: 1rem auto;
+      margin: 1rem auto 0 auto;
       max-width: 96%;
       height: 30vh;
       border: none;

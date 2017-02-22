@@ -1,5 +1,6 @@
 import React from 'react';
 import { observer } from 'mobx-react';
+import FloatButton from '../../../Components/FloatButton.js';
 
 @observer
 class Summary extends React.Component {
@@ -17,9 +18,14 @@ class Summary extends React.Component {
         <div className='summary-content'>
           <textarea id='summary-input' placeholder='Tell everybody about your awesome build!' defaultValue={summary}/>
           {/* //saved indicator */}
-          <span><i className='material-icons'>check</i>saved</span>
+          <span className='save'><i className='material-icons'>check</i>saved</span>
           {/* //link to markdown guide */}
           <a href='#' >Help</a>
+        </div>
+        <div className='panel-options-div'>
+          {/* <FloatButton id='add-image' icon='visibility' style={{background: 'green'}} /> */}
+          <FloatButton id='add-image' icon='edit' />
+          {/* <FloatButton id='add-image' icon=''  style={{background: 'red'}} /> */}
         </div>
       </section>
     )
