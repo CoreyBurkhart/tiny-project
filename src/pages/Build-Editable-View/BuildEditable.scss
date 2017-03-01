@@ -2,6 +2,7 @@
 
 //TITLE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #build-editable-wrapper {
+
   #build-header {
     display: flex;
     flex-direction: column;
@@ -13,22 +14,6 @@
     z-index: 2000;
     color: royalblue;
     box-shadow: 1px 1px 1px 1px gray;
-  }
-  .builders-div {
-    height: 50px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    max-width: 75%;
-    justify-content: space-around;
-    align-items: center;
-    margin: 0 0 1rem 0;
-    .builder {
-      border-radius: 100%;
-      margin: .2rem;
-      width: 40px;
-      height: 40px;
-    }
   }
   .build-name, .build-menu {
     margin: 1rem;
@@ -43,6 +28,22 @@
     position: absolute;
     top: 0;
     right: 0;
+  }
+}
+.builders-div {
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 75%;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 0 1rem 0;
+  .builder {
+    border-radius: 100%;
+    margin: .2rem;
+    width: 40px;
+    height: 40px;
   }
 }
 
@@ -65,18 +66,17 @@
   }
   #gallery {
     padding-top: .5rem;
-    padding-bottom: 2rem;
+    padding-bottom: 3rem;
     z-index: 100;
+
     .fig-container {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;
-      padding: 0 2px;
       width: 100%;
       margin: 0 auto;
       .gallery-fig {
-        margin: 0;
-        padding: 0 2px ;
+        margin: 0 auto;
         width: calc(50% - 8px);
         position: relative;
         img {
@@ -99,12 +99,12 @@
 .float-button {
   border-radius: 100%;
   border: none;
-  width: 50px;
-  height: 50px;
+  width: $float-button-width;
+  height: $float-button-width;
   color: white;
   background: $primary-color;
-  margin: 0 .2rem;
-  z-index: 5000 !important;
+  margin: 0;
+  z-index: 5000;
   box-shadow: 1px 1px 1px 1px darkgray;
   i {
     display: inline-block;
@@ -113,13 +113,15 @@
   }
 }
 
+
+
 #add-builder {
   width: 40px;
   height: 40px;
 }
 
 .panel-options-div {
-  position: absolute;
+  position: relative;
   width: 100%;
   bottom: -25px;
   left: 0;
