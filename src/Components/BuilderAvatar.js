@@ -1,5 +1,4 @@
 import React from 'react';
-import { TweenMax } from 'gsap';
 
 
 class BuilderAvatar extends React.Component {
