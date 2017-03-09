@@ -1,45 +1,19 @@
 import React from 'react';
-import {observer} from 'mobx-react';
+import { observer } from 'mobx-react';
 import FloatButton from '../../../Components/FloatButton.js';
-import {TransitionMotion, spring} from 'react-motion';
+import { spring } from 'react-motion';
+import PanelMenu from '../../../Components/PanelMenu.js';
+
 
 @observer
 class Gallery extends React.Component {
-    // panelMenuButtons = [<FloatButton icon='add' style={{background: 'green'}}/>,
-    //                     <FloatButton icon='delete' style={{background: 'red'}}/>,
-    //                     <FloatButton icon='edit' style={{background: 'green'}}/>]
-    state = {
-        buttonInfo: [
-            {
-                key: 'add',
-                color: 'green',
-                style: {x: spring(10)}
 
-            },
-            {
-                key: 'edit',
-                color: 'blue',
-                style: {x: spring(10)}
-            }
-        ]
-    }
-    panelMenuClick() {
-        this.setState({
-            buttonInfo: [
-                {
-                    key: 'add',
-                    color: 'green',
-                    style: {x: spring(10)}
-                }
-            ]
-        })
-    }
-
-
-
-    willLeave() {
-        return {x: spring(0)}
-    }
+    buttons = [
+        {icon: 'delete', color: 'red',sp: spring(-60, {stiffness: 750, damping: 40})},
+        {icon:  'add', color: 'green',sp: spring(60, {stiffness: 750, damping: 40})},
+        {icon:  'watch', color: 'aqua',sp: spring(-120, {stiffness: 750, damping: 40})},
+        {icon:  'home', color: 'orange',sp: spring(120, {stiffness: 750, damping: 40})}
+    ];
 
     render() {
         const {gallery} = this.props.store;
@@ -54,30 +28,8 @@ class Gallery extends React.Component {
                             </figure>
                         )
                     })}
+                    <PanelMenu buttons={this.buttons} />
 
-                    <div className='panel-options-div'>
-                        <TransitionMotion
-                            willLeave={this.willLeave}
-                            styles={this.state.buttonInfo.map((info) => {
-                                    return {
-                                        key: info.key,
-                                        style: info.style
-                                }})}>
-                            {
-                                (inf )=> {
-                                    return (<div>
-                                        {inf.map((config) => {
-                                            return (<FloatButton
-                                                key={Math.random().toString()}
-                                                icon={config.icon}
-                                                style={config.style}/>)
-                                        })}
-                                    </div>)
-                                    }
-                            }
-                        </TransitionMotion>
-                        <button onClick={this.panelMenuClick.bind(this)} >click</button>
-                    </div>
                 </div>
             </section>
         )

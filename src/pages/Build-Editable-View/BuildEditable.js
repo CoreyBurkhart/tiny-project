@@ -3,7 +3,7 @@ import { observer } from 'mobx-react'
 import './BuildEditable.scss';
 import BuilderAvatar from '../../Components/BuilderAvatar.js';
 // import store from './BuildEditableStore.js';
-import { Summary, Gallery } from './Components/ComponentIndex.js';
+import { Summary, Gallery, Diagram, Model } from './Components/ComponentIndex.js';
 import FloatButton from '../../Components/FloatButton.js';
 
 @observer
@@ -27,6 +27,8 @@ class BuildEditable extends React.Component {
                 </header>
                 <Gallery store={this.props.route.store}/>
                 <Summary store={this.props.route.store}/>
+                <Diagram store={this.props.route.store}/>
+                <Model store={this.props.route.store}/>
             </div>
         )
     }

@@ -11,7 +11,7 @@ class FloatButton extends React.Component {
       icon = 'add',
       KEY= Math.random().toString()
     } = this.props;
-    console.log(style);
+
     return (
       <button id={id} style={style} key={KEY} className={'float-button ' + className} onClick={onClick}>
         <i className="material-icons">{icon}</i>

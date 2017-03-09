@@ -1,8 +1,6 @@
-@import '../../variables.scss';
+@import '../../variables.scss'; //TITLE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-//TITLE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #build-editable-wrapper {
-
   #build-header {
     display: flex;
     flex-direction: column;
@@ -15,14 +13,17 @@
     color: royalblue;
     box-shadow: 1px 1px 1px 1px gray;
   }
-  .build-name, .build-menu {
+
+  .build-menu,
+  .build-name {
     margin: 1rem;
     z-index: 2010;
   }
+
   .build-name {
-    @include font-size($font-map)
-    text-transform: capitalize;
+    @include font-size($font-map) text-transform: capitalize;
   }
+
   .build-menu {
     font-size: 2rem;
     position: absolute;
@@ -30,6 +31,7 @@
     right: 0;
   }
 }
+
 .builders-div {
   height: 50px;
   display: flex;
@@ -38,35 +40,40 @@
   max-width: 75%;
   justify-content: space-around;
   align-items: center;
-  margin: 0 0 1rem 0;
+  margin: 0 0 1rem;
+
   .builder {
     border-radius: 100%;
-    margin: .2rem;
+    margin: 0.2rem;
     width: 40px;
     height: 40px;
   }
 }
-
 // END TITLE !!!!!!!!!!!!!!!!
-
-
 // GALLERY !!!!!!!!!!!!!!!!!!!!!!!!
+
 #build-editable-wrapper {
   padding-bottom: 11vh;
   z-index: 5000;
   width: 100%;
   text-align: center;
   position: relative;
+
   .panel {
     background: $paper-dark;
     z-index: -100;
     position: relative;
     box-shadow: 1px 1px 1px 1px gray;
-    margin: 3vh 0 6vh 0;
+    margin-bottom: 50px;
+    padding-bottom: -25px;
   }
+
+  .panel:last-child {
+    margin-bottom: 100px;
+  }
+
   #gallery {
-    padding-top: .5rem;
-    padding-bottom: 3rem;
+    padding-top: 1rem;
     z-index: 100;
 
     .fig-container {
@@ -75,13 +82,16 @@
       flex-wrap: wrap;
       width: 100%;
       margin: 0 auto;
+
       .gallery-fig {
         margin: 0 auto;
         width: calc(50% - 8px);
         position: relative;
+
         img {
           width: 100%;
         }
+
         .delete-box {
           position: absolute;
           top: 5%;
@@ -106,6 +116,7 @@
   margin: 0;
   z-index: 5000;
   box-shadow: 1px 1px 1px 1px darkgray;
+
   i {
     display: inline-block;
     font-size: 1.8rem;
@@ -113,18 +124,27 @@
   }
 }
 
-
-
 #add-builder {
   width: 40px;
   height: 40px;
 }
 
 .panel-options-div {
-  position: absolute;
+  position: relative;
   width: 100%;
-  bottom: -25px;
-  left: 0;
+  min-height: 50px;
+  margin-top: 2rem;
+  transform: translate3d(0px, 25px, 0px);
+
+  .float-button {
+    position: absolute;
+    left: calc(50% - 25px);
+    z-index: -50;
+  }
+
+  #toggle {
+    z-index: 5000;
+  }
 }
 
 .divider {
@@ -133,43 +153,47 @@
   height: 0;
   border-bottom: 1px solid $paper-darkest;
 }
-
 // END OF GALLERY !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // START SUMMARY!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 .info {
   color: $info;
 }
-#summary{
-  padding: 1rem 0;
+
+#summary {
+  // padding: 1rem 0;
   .summary-description {
-    margin: 1rem 0;
-    padding: 0 .5rem;
+    // margin: 1rem 0;
+    // padding: 0 .5rem;
     background: transparentize(lighten($info, 20%), .7);
   }
+
   .save {
     display: inline-block;
     color: $success;
     font-weight: bold;
-    margin: 1rem;
-    padding: .3rem;
-    // background: white;
   }
+
   .summary-content {
     width: 100%;
-    margin: auto;
     padding: 0;
+
     #summary-input {
       width: 100%;
-      margin: 1rem auto 0 auto;
       max-width: 96%;
       height: 30vh;
       border: none;
-      padding: .3rem;
+      padding: 0.3rem;
       border-bottom: 2px solid $paper-darkest;
     }
   }
+}
+
+#diagram {
+    img {
+        width: 100%;
+        margin-top: .5rem;
+    }
 }
