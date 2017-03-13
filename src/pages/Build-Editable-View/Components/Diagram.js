@@ -37,13 +37,13 @@ class Diagram extends React.Component {
         }
     ];
     render() {
-        const {summary} = this.props.store;
+        const { diagram_thumbs } = this.props.store;
 
         return (
             <section id='diagram' className='panel'>
-                <img src="https://www.supermodulor.com/wp-content/uploads/2017/01/outstanding-2d-house-plans-flickr-photo-sharing-house-2d-plan-medem-co-house-plan-in-autocad-2d-picture.jpg"/>
-                <img src="https://www.supermodulor.com/wp-content/uploads/2017/01/outstanding-autocad-for-home-design-home-design-ideas-house-plan-in-autocad-2d-pics.jpg"/>
-
+                {diagram_thumbs.map((thumb) => {
+                    return <img src={thumb} key={thumb} className='diagram-thumb' />
+                })}
                 <PanelMenu buttons={this.buttons}/>
             </section>
         )

@@ -11,6 +11,8 @@ class PanelMenu extends React.Component {
 
     handleClick(e) {
         this.setState({menuState: !this.state.menuState})
+        //set the state for the parent Component
+        this.props.editHandler();
     }
 
 

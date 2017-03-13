@@ -7,6 +7,34 @@ import PanelMenu from '../../../Components/PanelMenu.js';
 
 @observer
 class Gallery extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            editing: false,
+            checked_ids: [],
+            figs: []
+        }
+        this.toggleEditState = this.toggleEditState.bind(this)
+    }
+
+    toggleEditState() {
+        this.setState({editing: !this.state.editing})
+    }
+
+    deleteImg() {
+        if(this.state.editing) {
+            //delete the items checked
+            let checked
+        }
+    }
+
+    getCheckedFigs(refs) {
+        refs = refs.filter((figure) => {
+            let checkbox = figure.querySelector('.delete-box')
+            return checkbox.checked;
+        })
+        return refs;
+    }
 
     buttons = [
         {icon: 'delete', color: 'red',sp: spring(-60, {stiffness: 750, damping: 40})},
@@ -20,16 +48,15 @@ class Gallery extends React.Component {
         return (
             <section id='gallery' className='panel'>
                 <div className='fig-container'>
-                    {gallery.map((href) => {
+                    {gallery.map((thumb) => {
                         return (
-                            <figure key={href} className='gallery-fig'>
-                                <img src={href} alt='something'/>
-                                <input className='delete-box' type='checkbox'/>
+                            <figure key={thumb.id} className='gallery-fig' ref={fig => this.state.figs.push(fig)}>
+                                <img src={thumb.url} alt='something'/>
+                                <input className='delete-box' style={{display: this.state.editing ? 'block' : 'none'}} type='checkbox'/>
                             </figure>
                         )
                     })}
-                    <PanelMenu buttons={this.buttons} />
-
+                    <PanelMenu buttons={this.buttons} editHandler={this.toggleEditState}/>
                 </div>
             </section>
         )

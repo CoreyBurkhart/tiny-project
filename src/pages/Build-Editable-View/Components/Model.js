@@ -37,11 +37,11 @@ class Model extends React.Component {
         }
     ];
     render() {
-        const {summary} = this.props.store;
+        const { model } = this.props.store;
 
         return (
             <section id='model' className='panel'>
-                <iframe src="https://3dwarehouse.sketchup.com/embed.html?mid=u388c4293-54c7-4bd6-9a0e-a5ad78edb006&width=580&height=326" frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0" width="100%" height="326" allowFullScreen></iframe>
+                <iframe src={model} frameBorder="0" scrolling="no" marginHeight="0" marginWidth="0" width="100%" height="326" allowFullScreen></iframe>
 
                 <PanelMenu buttons={this.buttons}/>
             </section>
