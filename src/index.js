@@ -8,10 +8,12 @@ import BuildEditable from './pages/Build-Editable-View/BuildEditable.js';
 import BuildEditableStore from './pages/Build-Editable-View/BuildEditableStore.js';
 import './variables.scss'
 
+let store = new BuildEditableStore();
+
 ReactDOM.render(
   <Router history={hashHistory}>
     <Route path="/" component={Layout} >
-      <IndexRoute component={BuildEditable} store={BuildEditableStore} />
+      <IndexRoute component={BuildEditable} store={store} />
     </Route>
   </Router>
 , document.getElementById('root'))

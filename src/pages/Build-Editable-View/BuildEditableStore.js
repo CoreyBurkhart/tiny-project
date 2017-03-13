@@ -1,5 +1,5 @@
-import { observable } from 'mobx';
-
+import { observable, action } from 'mobx';
+import _ from 'lodash';
 /*
 Model:
 {
@@ -11,7 +11,7 @@ Model:
 }
 
 */
-
+// generate a randomish ID
 function getId() {
   return Math.random().toString(36).substring(2, 9);
 }
@@ -54,9 +54,16 @@ class BuildEditableStore {
     "https://www.supermodulor.com/wp-content/uploads/2017/01/outstanding-2d-house-plans-flickr-photo-sharing-house-2d-plan-medem-co-house-plan-in-autocad-2d-picture.jpg",
     "https://www.supermodulor.com/wp-content/uploads/2017/01/outstanding-autocad-for-home-design-home-design-ideas-house-plan-in-autocad-2d-pics.jpg"
     ];
-  @observable model = 'https://3dwarehouse.sketchup.com/embed.html?mid=u388c4293-54c7-4bd6-9a0e-a5ad78edb006&width=580&height=326'
+  @observable model = 'https://3dwarehouse.sketchup.com/embed.html?mid=u388c4293-54c7-4bd6-9a0e-a5ad78edb006&width=580&height=326';
+
+  @action removeGalleryImg(ids) {
+    let removed = _.remove(this.gallery, (el) => {
+      return ids.includes(el.id); 
+    })
+    return removed;
+  }
 }
 
-let bStore = window.bStore = new BuildEditableStore()
+let bStore = window.bStore = BuildEditableStore;
 
 export default bStore;
