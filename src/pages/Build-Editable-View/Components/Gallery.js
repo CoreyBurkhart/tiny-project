@@ -5,6 +5,7 @@ import FloatButton from '../../../Components/FloatButton.js';
 import { spring } from 'react-motion';
 import PanelMenu from '../../../Components/PanelMenu.js';
 import _ from 'lodash';
+import ConfirmModal from '../../../Components/ConfirmModal.js'
 
 @observer
 class Gallery extends React.Component {
@@ -12,10 +13,13 @@ class Gallery extends React.Component {
         super();
         this.state = {
             editing: false,
+            modal_visible: false
         }
+        this.modal = null;
         this.toggleEditState = this.toggleEditState.bind(this)
         this.deleteImg = this.deleteImg.bind(this);
         this.addImg = this.addImg.bind(this);
+        this.dismissModal = this.dismissModal.bind(this);
         this.buttons = [
             {
                 icon: 'delete',
@@ -67,14 +71,39 @@ class Gallery extends React.Component {
     deleteImg() {
         if(this.state.editing) {
             //delete the items checked
-            let checked = this.getCheckedFigs(this.figContainer); //returns array of ids
-            let removed = this.props.store.removeGalleryImg(checked);
-            // console.log(removed);
+            const checked = this.getCheckedFigs(this.figContainer); //returns array of ids
+            const continueDelete = () => {
+                this.props.store.removeGalleryImg(checked);
+            }
+            const dismissModal = () => {
+                this.setState({modal_visible: !this.state.modal_visible})
+            }
+            // TODO confirm action with user
+            const buttons = [
+                {
+                    BUTTON_TEXT: 'DELETE',
+                    BUTTON_STACK: [continueDelete, dismissModal]
+                },
+                {
+                    BUTTON_TEXT: 'Cancel',
+                    BUTTON_STACK: [dismissModal]
+                }
+            ]
+            const question = 'Delete these images?';
+            if(checked.length) {
+                this.setState({modal_visible: true});
+            }
+            this.modal = <ConfirmModal question={question} parent={this} buttons={buttons} />
         } else {
             //only can delete when editing
             return false;
         }
     }
+
+    dismissModal() {
+
+    }
+
 
     getCheckedFigs(container) {
         let figs = container.getElementsByClassName('gallery-fig');
@@ -90,12 +119,13 @@ class Gallery extends React.Component {
         return ids;
     }
 
-
+    dismissModal() {}
 
     render() {
         const {gallery} = this.props.store;
         return (
             <section id='gallery' className='panel'>
+                {this.state.modal_visible && this.modal }
                 <div className='fig-container' ref={fc => this.figContainer = fc}>
                     {(() => {
                         if(gallery.length) {
