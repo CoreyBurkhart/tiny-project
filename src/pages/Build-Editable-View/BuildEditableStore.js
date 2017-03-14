@@ -62,6 +62,18 @@ class BuildEditableStore {
     })
     return removed;
   }
+
+  @action addGalleryImg(srcArr) {
+    srcArr.forEach((src) => {
+      if(typeof src === 'string') {
+        this.gallery.push({
+        id: getId(),
+          url: src
+        })
+      }
+    })
+    
+  }
 }
 
 let bStore = window.bStore = BuildEditableStore;
