@@ -2,6 +2,7 @@ import React from 'react';
 
 class FloatButton extends React.Component {
 
+
   render() {
     const {
       id = '',
@@ -9,11 +10,13 @@ class FloatButton extends React.Component {
       className = '',
       onClick = (() => {}),
       icon = 'add',
+      inputElement = null,
       KEY= Math.random().toString()
     } = this.props;
 
     return (
       <button id={id} style={style} key={KEY} className={'float-button ' + className} onClick={onClick}>
+        {inputElement}
         <i className="material-icons">{icon}</i>
       </button>
     )

@@ -12,7 +12,11 @@ class PanelMenu extends React.Component {
     handleClick(e) {
         this.setState({menuState: !this.state.menuState})
         //set the state for the parent Component
-        this.props.editHandler();
+        if(this.props.functions) {
+            this.props.functions.forEach((fn) => {
+                fn()
+            })
+        }
     }
 
 
@@ -20,10 +24,10 @@ class PanelMenu extends React.Component {
         return (
             <div className='panel-options-div'>
                 {
-                    this.props.buttons.map((obj) => {
+                    this.props.buttons.map((obj, i) => {
                         return <Motion key={obj.icon} style={{x: this.state.menuState ? obj.sp : spring(0, {stiffness: 1000, damping: 40})}} >
                                 {({ x }) => {
-                                    return <FloatButton icon={obj.icon} id={obj.id || '' } onClick={this.handleClick} style={{transform: `translate3d(${x}px, 0px, 0px)`, background: `${obj.color}`}}/>
+                                    return <FloatButton inputElement={obj.inputElement} icon={obj.icon} id={obj.id || '' } onClick={obj.onClick} style={{transform: `translate3d(${x}px, 0px, 0px)`, background: `${obj.color}`}}/>
                                 }}
                             </Motion>
                     })
