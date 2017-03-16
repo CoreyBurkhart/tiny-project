@@ -13,18 +13,20 @@ import Lightbox from '../../../Components/Lightbox.js';
 
 @observer
 class Gallery extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             editing: false,
             modal_visible: false,
             lightbox_visible: false
         }
         this.modal = null;
-        this.toggleEditState = this.toggleEditState.bind(this)
-        this.deleteImg = this.deleteImg.bind(this);
-        this.addImg = this.addImg.bind(this);
+        this.lightbox = null;
+        this.DATA = this.props.store.gallery;
+        this.deleteImg = this.deleteImg.bind(this, this.props.store.removeGalleryImg.bind(this.props.store));
         this.dismissLightbox = this.dismissLightbox.bind(this);
+        this.addImg = this.addImg.bind(this,  null, this.props.store.addGalleryImg.bind(this.props.store));        
+        this.toggleEditState = this.toggleEditState.bind(this)        
         this.buttons = [
             {
                 icon: 'delete',
@@ -41,12 +43,11 @@ class Gallery extends React.Component {
             }
         ];
     }
-
     toggleEditState() {
         this.setState({editing: !this.state.editing})
     }
 
-    addImg(e) {
+    addImg(e, callback) {
         let change = (e) => {
             let files = [...e.target.files];
             //get any not images
@@ -66,8 +67,8 @@ class Gallery extends React.Component {
                 })
             }
 
-            let filePromises = files.map((file) => {
-                return this.props.store.addGalleryImg(getImageFromDialog(file));
+            files.forEach((file) => {
+                callback(getImageFromDialog(file), this.DATA)
             })
             if(notImages.length) {
                 const names = notImages.map(file => '- ' + file.name);
@@ -78,12 +79,12 @@ class Gallery extends React.Component {
         this.addImgInput.onchange = change;        // trigger hidden input
         this.addImgInput.click();
     }
-    deleteImg() {
+    deleteImg(callback) {
         if(this.state.editing) {
             //delete the items checked
             const checked = this.getCheckedFigs(this.figContainer); //returns array of ids
             const continueDelete = () => {
-                this.props.store.removeGalleryImg(checked);
+                callback(checked, this.DATA);
             }
             const dismissModal = () => {
                 this.setState({modal_visible: !this.state.modal_visible})
@@ -131,12 +132,14 @@ class Gallery extends React.Component {
 
     toggleLightbox(id) {
         this.setState({lightbox_visible: true})        
-        const index = _.findIndex(this.props.store.gallery, ['id', id]) 
-        this.lightbox = <Lightbox index={index} dismiss={this.dismissLightbox} images={this.props.store.gallery} />
+        const index = _.findIndex(this.DATA, ['id', id]) 
+        
+        this.lightbox = <Lightbox index={index} dismiss={this.dismissLightbox} images={this.DATA} />
     } 
 
     render() {
         const {gallery} = this.props.store;
+
         return (
             <section id='gallery' className='panel'>
                 {this.state.modal_visible && this.modal }
@@ -162,7 +165,7 @@ class Gallery extends React.Component {
                             )
                         })
                     } else {
-                        return <p style={{textAlign: 'center'}}>You have no images in your gallery <span style={{color: 'royalblue'}} onClick={this.addImg} >click here</span> to add one!</p>
+                        return <p style={{textAlign: 'center'}}>There's nothing here.</p>
                     }})()}
                     <PanelMenu buttons={this.buttons} functions={[this.toggleEditState]}/>
                 </div>

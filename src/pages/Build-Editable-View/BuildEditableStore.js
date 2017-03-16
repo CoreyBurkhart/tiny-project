@@ -19,6 +19,12 @@ function getId() {
 
 
 class BuildEditableStore {
+  constructor() {
+  this.removeGalleryImg = this.removeGalleryImg.bind(this);
+  this.addGalleryImg = this.addGalleryImg.bind(this);
+  }
+
+
   @observable title = 'My Tiny House Build';
   @observable builders = [{
       name: 'George',
@@ -56,30 +62,41 @@ class BuildEditableStore {
     markdown: " Blockquotes are very handy in email to emulate reply text.> This line is part of the same quote.Quote break.> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote. "
   };
   @observable diagram_thumbs = [
-    "https://www.supermodulor.com/wp-content/uploads/2017/01/outstanding-2d-house-plans-flickr-photo-sharing-house-2d-plan-medem-co-house-plan-in-autocad-2d-picture.jpg",
-    "https://www.supermodulor.com/wp-content/uploads/2017/01/outstanding-autocad-for-home-design-home-design-ideas-house-plan-in-autocad-2d-pics.jpg"
-    ];
+    {
+      id: getId(),
+      url: "https://www.supermodulor.com/wp-content/uploads/2017/01/outstanding-2d-house-plans-flickr-photo-sharing-house-2d-plan-medem-co-house-plan-in-autocad-2d-picture.jpg"
+    }, 
+    {
+      id: getId(),
+      url: "https://www.supermodulor.com/wp-content/uploads/2017/01/outstanding-autocad-for-home-design-home-design-ideas-house-plan-in-autocad-2d-pics.jpg"
+    }
+  ];
   @observable model = 'https://3dwarehouse.sketchup.com/embed.html?mid=u388c4293-54c7-4bd6-9a0e-a5ad78edb006&width=580&height=326';
 
-  @action removeGalleryImg(ids) {
-    let removed = _.remove(this.gallery, (el) => {
+  @action removeGalleryImg(ids, arr) {
+    let removed = _.remove(arr, (el) => {
       return ids.includes(el.id); 
     })
+        console.log('called removeGalleryImg')
     return removed;
   }
 
-  @action addGalleryImg(promise) {
+  @action addGalleryImg(promise, arr) {
       promise.then((result) => {
         let img = {
           id: getId(),
           url: result
         }
-        this.gallery.push(img)
+        arr.push(img)
       })
       .catch((error) => {
+        console.log(error)
         console.log('error')
       });
   }
+  @action removeDiagramImg = this.removeGalleryImg.bind(this);
+  @action addDiagramImg = this.addGalleryImg.bind(this);
+
   @action setSummarySavedState(bool) {
     if(_.isBoolean(bool)) {
       this.summary.saved = bool;
