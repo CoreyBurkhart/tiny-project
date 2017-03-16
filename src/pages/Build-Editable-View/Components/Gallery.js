@@ -24,6 +24,7 @@ class Gallery extends React.Component {
         this.toggleEditState = this.toggleEditState.bind(this)
         this.deleteImg = this.deleteImg.bind(this);
         this.addImg = this.addImg.bind(this);
+        this.dismissLightbox = this.dismissLightbox.bind(this);
         this.buttons = [
             {
                 icon: 'delete',
@@ -125,10 +126,14 @@ class Gallery extends React.Component {
         return ids;
     }
 
+    dismissLightbox() {
+        this.setState({lightbox_visible: false})
+    }
+
     toggleLightbox(id) {
-        this.setState({lightbox_visible: !this.state.lightbox_visible})
+        this.setState({lightbox_visible: true})        
         const index = _.findIndex(this.props.store.gallery, ['id', id]) 
-        this.lightbox = <Lightbox index={index} images={this.props.store.gallery} />
+        this.lightbox = <Lightbox index={index} dismiss={this.dismissLightbox} images={this.props.store.gallery} />
     } 
 
     render() {
@@ -144,7 +149,7 @@ class Gallery extends React.Component {
                         return (
                             <figure onClick={this.toggleLightbox.bind(this, thumb.id)} key={thumb.id} data-id={thumb.id} className='gallery-fig' >
                                     <img src={thumb.url} alt='something'/>
-                                <input className='delete-box' style={{display: this.state.editing ? 'block' : 'none'}} type='checkbox'/>
+                                <input onClick={(e) => {e.stopPropagation()}}className='delete-box' style={{display: this.state.editing ? 'block' : 'none'}} type='checkbox'/>
                             </figure>
                             )
                         })

@@ -28,7 +28,9 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-motion": "^0.4.7",
-    "react-router": "^3.0.1"
+    "react-router": "^3.0.1",
+    "react-swipe": "^5.0.6",
+    "swipe-js-iso": "^2.0.3"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
