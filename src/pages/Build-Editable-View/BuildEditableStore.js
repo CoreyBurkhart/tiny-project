@@ -1,4 +1,5 @@
-import { observable, action } from 'mobx';
+import { observable, action, computed } from 'mobx';
+import { markdown } from 'markdown';
 import _ from 'lodash';
 /*
 Model:
@@ -49,7 +50,11 @@ class BuildEditableStore {
       url: 'https://www.tumbleweedhouses.com/wp-content/uploads/tumbleweed-tiny-house-elm-0014.jpg'
     }
   ];
-  @observable summary = 'this is an example summary!';
+  @observable summary = {
+    saved: true,
+    html: '<h1>hi</h1>',
+    markdown: " Blockquotes are very handy in email to emulate reply text.> This line is part of the same quote.Quote break.> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote. "
+  };
   @observable diagram_thumbs = [
     "https://www.supermodulor.com/wp-content/uploads/2017/01/outstanding-2d-house-plans-flickr-photo-sharing-house-2d-plan-medem-co-house-plan-in-autocad-2d-picture.jpg",
     "https://www.supermodulor.com/wp-content/uploads/2017/01/outstanding-autocad-for-home-design-home-design-ideas-house-plan-in-autocad-2d-pics.jpg"
@@ -74,6 +79,24 @@ class BuildEditableStore {
       .catch((error) => {
         console.log('error')
       });
+  }
+  @action setSummarySavedState(bool) {
+    if(_.isBoolean(bool)) {
+      this.summary.saved = bool;
+    } else {
+      throw new Error('cannot set summary saved state to non boolean value')
+    }
+  }
+  @action updateSummary(md) {
+    if(_.isString(md)) {
+      this.summary.markdown = md;
+      this.summary.html = markdown.toHTML(md);
+      this.summary.saved = true;
+      console.log(this.summary.html)
+    }
+  }
+  @computed get summaryHTML() {
+    return markdown.toHTML(this.summary.markdown);
   }
 }
 
