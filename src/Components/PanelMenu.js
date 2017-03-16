@@ -11,7 +11,7 @@ class PanelMenu extends React.Component {
 
     handleClick(e) {
         this.setState({menuState: !this.state.menuState})
-        //set the state for the parent Component
+        //run functions in the props.function stack
         if(this.props.functions) {
             this.props.functions.forEach((fn) => {
                 fn()
@@ -24,12 +24,26 @@ class PanelMenu extends React.Component {
         return (
             <div className='panel-options-div'>
                 {
-                    this.props.buttons.map((obj, i) => {
-                        return <Motion key={obj.icon} style={{x: this.state.menuState ? obj.sp : spring(0, {stiffness: 1000, damping: 40})}} >
-                                {({ x }) => {
-                                    return <FloatButton inputElement={obj.inputElement} icon={obj.icon} id={obj.id || '' } onClick={obj.onClick} style={{transform: `translate3d(${x}px, 0px, 0px)`, background: `${obj.color}`}}/>
-                                }}
-                            </Motion>
+                    this.props.buttons.map(({ 
+                            inputElement,
+                            icon,
+                            id,
+                            onClick,
+                            color,
+                            sp
+                        }, i) => {
+                            return <Motion 
+                                        key={icon} 
+                                        style={{x: this.state.menuState ? sp : spring(0, {stiffness: 1000, damping: 40})}} >
+                                            {({ x }) => {
+                                                return <FloatButton 
+                                                    inputElement={inputElement} 
+                                                    icon={icon} 
+                                                    id={id || '' } 
+                                                    onClick={onClick} 
+                                                    style={{transform: `translate3d(${x}px, 0px, 0px)`, background: `${color}`}}/>
+                                            }}
+                                    </Motion>
                     })
                 }
                 <FloatButton icon={!this.state.menuState ? 'edit' : 'close'} onClick={this.handleClick} id='toggle'/>

@@ -9,7 +9,6 @@
     background: white;
     margin: 0;
     padding: 0;
-    z-index: 2000;
     color: royalblue;
     box-shadow: 1px 1px 1px 1px gray;
   }
@@ -17,7 +16,6 @@
   .build-menu,
   .build-name {
     margin: 1rem;
-    z-index: 2010;
   }
 
   .build-name {
@@ -52,17 +50,35 @@
 // END TITLE !!!!!!!!!!!!!!!!
 // GALLERY !!!!!!!!!!!!!!!!!!!!!!!!
 
+.loader {
+  width: 50px;
+  height: 50px;
+  margin: calc(50% - 50px) auto 0 auto;
+  border-radius: 100%;
+  border-top: 3px solid $primary-color;
+  // transition: border
+  animation: 1s infinite rotate;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 #build-editable-wrapper {
   padding-bottom: 11vh;
-  z-index: 5000;
+  // z-index: 5;
   width: 100%;
   text-align: center;
   position: relative;
 
   .panel {
     background: $paper-dark;
-    z-index: -100;
-    position: relative;
+    z-index: 5;
     box-shadow: 1px 1px 1px 1px gray;
     margin-bottom: 50px;
     padding-bottom: -25px;
@@ -74,8 +90,6 @@
 
   #gallery {
     padding-top: 1rem;
-    z-index: 100;
-
     .fig-container {
       display: flex;
       flex-direction: row;
@@ -87,7 +101,7 @@
         margin: 0 auto;
         width: calc(50% - 8px);
         position: relative;
-
+        z-index: 6;
         img {
           width: 100%;
         }
@@ -106,6 +120,69 @@
   }
 }
 
+.loader-container {
+  width: 50%;
+  height: 200px;
+}
+
+.modal {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0, .7);
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 15;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .modal-content {
+    width: 80%;
+    margin: 0 auto;
+    background: $paper-lightest;
+    border-radius: 3px;
+    padding: 1rem;
+    }
+    .question {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .button-container {
+      border: none;
+      button {
+        border: none;        
+        background: none;
+        border: none;
+        margin: 0 auto;
+        border-radius: 3px;
+        color: white;
+        font-weight: bold;
+        padding: .5rem 1rem;                
+      }
+    .delete {
+        background: red;
+        margin: 0 .5rem;
+      }
+    .cancel {
+        background: $primary-color;
+        color: white;
+      }
+     }
+}
+
+.lightbox-container {
+  width: 100%;
+  @media(orientation: landscape) {
+    width: auto;
+    height: 80%;
+    max-width: 95%;
+    margin: 0 auto;
+  }
+}
+.lightbox-img {
+  width: 100%;
+}
+
 .float-button {
   border-radius: 100%;
   border: none;
@@ -114,7 +191,6 @@
   color: white;
   background: $primary-color;
   margin: 0;
-  z-index: 5000;
   box-shadow: 1px 1px 1px 1px darkgray;
 
   i {
@@ -139,11 +215,7 @@
   .float-button {
     position: absolute;
     left: calc(50% - 25px);
-    z-index: -50;
-  }
-
-  #toggle {
-    z-index: 5000;
+    z-index: 5;
   }
 }
 

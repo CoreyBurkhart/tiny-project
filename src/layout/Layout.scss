@@ -9,12 +9,13 @@
 
 nav {
   position: fixed;
+  isolation: isolate;
   bottom: 0;
   left: 0;
   height: 12%;
   width: 100%;
   background: white;
-  z-index: 9001;
+  z-index: 6;
   ul {
     display: flex;
     flex-direction: row;

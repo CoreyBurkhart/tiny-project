@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Modal from './Modal.js';
 // example props format
 // props = {
 //     question: String,
@@ -30,13 +30,14 @@ const ConfirmModal = (props) => {
         }
     )
 
-    return <div className='confirm-modal' id='delete-img-confirm-modal'>
+    return <Modal 
+            modalAttributes={{className: 'delete-img modal' }}
+            modalContentAttributes={{className: 'modal-content'}} >
                 <p className='modal-question'>{props.question}</p>
-                <fieldset className='buttons'>
+                <fieldset className='button-container'>
                     {buttons}
                 </fieldset>
-            </div>
-    
+            </Modal>
 }
 
 export default ConfirmModal;

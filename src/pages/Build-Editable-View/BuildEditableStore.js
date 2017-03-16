@@ -63,19 +63,18 @@ class BuildEditableStore {
     return removed;
   }
 
-  @action addGalleryImg(srcArr) {
-    srcArr.forEach((src) => {
-      if(typeof src === 'string') {
-        this.gallery.push({
-        id: getId(),
-          url: src
-        })
-      }
-    })
-    
+  @action addGalleryImg(promise) {
+      promise.then((result) => {
+        let img = {
+          id: getId(),
+          url: result
+        }
+        this.gallery.push(img)
+      })
+      .catch((error) => {
+        console.log('error')
+      });
   }
 }
 
-let bStore = window.bStore = BuildEditableStore;
-
-export default bStore;
+export default BuildEditableStore;
