@@ -22,13 +22,6 @@ class Summary extends React.Component {
                 color: 'royalblue',
                 sp: spring(-60, {stiffness: 750, damping: 40})
             }
-            // {
-            //     icon:  'add',
-            //     inputElement: <input style={{display: 'none'}} multiple ref={(el => this.addImgInput = el)} type='file' />,
-            //     onClick: this.addImg,
-            //     color: 'green',
-            //     sp: spring(60, {stiffness: 750, damping: 40})
-            // }
         ];
   }
 
@@ -45,12 +38,12 @@ class Summary extends React.Component {
       window.clearTimeout(this.timerId);
     }
     //wait 2 seconds
+    // as long as it hasn't changed save the data
     this.timerId = window.setTimeout(() => {
       if(this.previous_md === this.summary.value) {
         this.props.store.updateSummary(this.summary.value)
       }
     }, 2000) 
-    // as long as it hasn't changed save the data
   }
 
   showPreview() {
@@ -60,7 +53,6 @@ class Summary extends React.Component {
             modalContentAttributes={{className: 'modal-content'}} >
                 <div style={{width: '100%'}} 
                 dangerouslySetInnerHTML={{__html: this.props.store.summaryHTML}}>
-                  
                 </div>
                 <button onClick={this.dismissPreview.bind(this)}>dismiss</button>
             </Modal>
@@ -69,13 +61,7 @@ class Summary extends React.Component {
   dismissPreview() {
     this.setState({preview_visible: false})
   }
-  
 
-  //onchange set the state to not-saved and  start a timer.
-    // if they are still typing, cancel that timer and start a new one
-    // if the timer goes off it should trigger get and save the computed markdown -> html
-    // then set the state to saved
-    
   render() {
     const { summary } = this.props.store;
     const saved = <span className='save'><i className='material-icons'>check</i>saved</span>;
@@ -95,8 +81,7 @@ class Summary extends React.Component {
             onChange={this.updateSummary}
             placeholder='Tell everybody about your awesome build!'
             defaultValue={summary.markdown} 
-            ref={s => this.summary = s}/>
-          
+            ref={s => this.summary = s}/>        
           {/* //saved indicator */}
           {summary.saved && saved}          
           {/* //link to markdown guide */}

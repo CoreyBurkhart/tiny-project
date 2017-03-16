@@ -51,7 +51,6 @@ class Gallery extends React.Component {
             let files = [...e.target.files];
             //get any not images
             let notImages = _.remove(files, (f) => {
-                // console.log(f);
                 return f.type !== 'image/jpeg'
             })
             let getImageFromDialog = (file) => {
@@ -147,9 +146,18 @@ class Gallery extends React.Component {
                         if(gallery.length) {
                         return gallery.map((thumb) => {
                         return (
-                            <figure onClick={this.toggleLightbox.bind(this, thumb.id)} key={thumb.id} data-id={thumb.id} className='gallery-fig' >
-                                    <img src={thumb.url} alt='something'/>
-                                <input onClick={(e) => {e.stopPropagation()}}className='delete-box' style={{display: this.state.editing ? 'block' : 'none'}} type='checkbox'/>
+                            <figure onClick={this.toggleLightbox.bind(this, thumb.id)} 
+                            key={thumb.id} 
+                            data-id={thumb.id} 
+                            className='gallery-fig' >
+                                <img 
+                                src={thumb.url} 
+                                alt='something'/>
+                                <input 
+                                onClick={(e) => {e.stopPropagation()}}
+                                className='delete-box' 
+                                style={{display: this.state.editing ? 'block' : 'none'}} 
+                                type='checkbox'/>
                             </figure>
                             )
                         })
