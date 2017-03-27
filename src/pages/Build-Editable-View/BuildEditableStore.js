@@ -12,7 +12,12 @@ Model:
 }
 
 */
-// generate a randomish ID
+/*
+  This store consists of filler information for building views
+*/
+
+// generate a randomish ID for internal management and react keys
+// this will be handled by mongo _id's later most likely...
 function getId() {
   return Math.random().toString(36).substring(2, 9);
 }
