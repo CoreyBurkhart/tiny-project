@@ -8,7 +8,7 @@ import BuildEditable from './pages/Build-Editable-View/BuildEditable.js';
 import BuildEditableStore from './pages/Build-Editable-View/BuildEditableStore.js';
 import './variables.scss'
 
-let store = new BuildEditableStore();
+let store = window.store =  new BuildEditableStore();
 
 ReactDOM.render(
   <Router history={hashHistory}>

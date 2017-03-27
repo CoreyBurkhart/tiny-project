@@ -29,7 +29,7 @@ const ConfirmModal = (props) => {
             return <button key={obj.BUTTON_TEXT} className={obj.BUTTON_CLASS} onClick={click} >{obj.BUTTON_TEXT}</button>
         }
     )
-
+    buttons = buttons.reverse()
     return <Modal 
             modalAttributes={{className: 'delete-img modal' }}
             modalContentAttributes={{className: 'modal-content'}} >

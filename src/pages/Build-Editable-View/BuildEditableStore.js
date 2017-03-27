@@ -72,7 +72,11 @@ class BuildEditableStore {
     }
   ];
   @observable model = 'https://3dwarehouse.sketchup.com/embed.html?mid=u388c4293-54c7-4bd6-9a0e-a5ad78edb006&width=580&height=326';
-
+  @action updateTitle(title) {
+    if(_.isString(title)) {
+      this.title = title
+    }
+  }
   @action removeGalleryImg(ids, arr) {
     let removed = _.remove(arr, (el) => {
       return ids.includes(el.id); 

@@ -22,6 +22,40 @@
     @include font-size($font-map) text-transform: capitalize;
   }
 
+  .vert-menu {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    margin: 0;
+    padding: 0;
+    width: 45%;
+    list-style: none;
+    background: white;
+    box-shadow: 1px 1px 1px 1px gray;    
+    .context-link {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-around;
+      margin: .5rem 0;
+      // margin: 0 1.5rem;
+      span i {
+        // padding-right: .5rem;
+      }
+      span {
+        display: inline-block;
+      }
+    }
+    // li {
+    //   padding: .5rem 1.5rem .5rem 0;
+    //   vertical-align: middle;
+    //   i {
+    //     padding: 0 1rem;
+    //   }
+    // }
+  }
+
   .build-menu {
     font-size: 2rem;
     position: absolute;
@@ -136,35 +170,31 @@
   flex-direction: column;
   justify-content: center;
   .modal-content {
-    width: 80%;
+    width: 65%;
     margin: 0 auto;
     background: $paper-lightest;
     border-radius: 3px;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
+    text-align: left;
     }
-    .question {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
+    .modal-question {
+      margin-bottom: 50px;
+      color: $text-color;
     }
     .button-container {
       border: none;
-      button {
-        border: none;        
+      padding: 0;
+      float: right;
+      .delete, .cancel {
+        border: none;
+        display: inline;   
         background: none;
         border: none;
-        margin: 0 auto;
-        border-radius: 3px;
-        color: white;
-        font-weight: bold;
-        padding: .5rem 1rem;                
-      }
-    .delete {
-        background: red;
-        margin: 0 .5rem;
-      }
-    .cancel {
-        background: $primary-color;
-        color: white;
+        // margin: 0;
+        color: $primary-color;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 1.0rem;
       }
      }
 }
@@ -234,11 +264,15 @@
 }
 .dismiss-lightbox {
   position: absolute;
+  border-radius: 100%;
   top: 15px;
   right: 15px;
   color: white;
   font-size: 30px;
   z-index: 10;
+  @media (orientation: landscape) {
+    background: rgba(0,0,0, .5);
+  }
 }
 
 #summary {
